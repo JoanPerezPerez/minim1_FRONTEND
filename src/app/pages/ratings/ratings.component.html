@@ -1,0 +1,48 @@
+<div class="container">
+    <h2>Gestión de Valoraciones</h2>
+  
+    <form [formGroup]="ratingForm" (ngSubmit)="submitRating()">
+      <label for="calendar">ID del Calendario:</label>
+      <input type="text" id="calendar" formControlName="calendar" required />
+  
+      <label for="score">Puntuación:</label>
+      <select id="score" formControlName="score" required>
+        <option [value]="0">Negativo (0)</option>
+        <option [value]="1">Positivo (1)</option>
+      </select>
+  
+      <button type="submit">
+        {{ editingRating ? 'Actualizar' : 'Crear' }} Valoración
+      </button>
+      <button type="button" (click)="resetForm()" *ngIf="editingRating">Cancelar</button>
+    </form>
+  
+    <h3>Lista de Valoraciones</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Calendario</th>
+          <th>Puntuación</th>
+          <th>Fecha</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rating of ratings">
+          <td>{{ rating.calendar }}</td>
+          <td>{{ rating.score }}</td>
+          <td>{{ rating.timestamp | date: 'short' }}</td>
+          <td>
+            <button (click)="editRating(rating)">Editar</button>
+            <button (click)="deleteRating(rating._id!)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pagination">
+        <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">⬅ Anterior</button>
+        <span>Página {{ currentPage }} de {{ Math.ceil(totalRatings / itemsPerPage) }}</span>
+        <button (click)="changePage(currentPage + 1)" [disabled]="currentPage * itemsPerPage >= totalRatings">Siguiente ➡</button>
+    </div>
+  </div>
+  

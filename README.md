@@ -1,4 +1,6 @@
 <<<<<<< HEAD
+Al llarg del minim 1 s' ha creat la colecció pertintnt  a mongoDB, aquesta permet fer una puntuació binària 1 o 0 dels calendaris de la nostra aplicació unicament una per calendari ( ja que en principi cada calendari té associat un unic usuari que l'administra) un cop aqui s'han fet les operacions bàsiques de crud ( la operació read s'ha fet directament amb la paginació). A nivell d'implementació en el frontend hem utilitzat totes les trucades que es realitzen en una pagina apart, es a dir hem creat una component, un model i un servei nous i els hem implementat en una nova pestanya de la nostra toolbar, això s'ha fet d'aquesta forma i no en la vista de la segona entitat per a facilitar visualment el que estem fent així com per poder mostrar totes les dades de forma correcte. En futures implementacions es podria mirar d'adaptar el codi actual per no haver d'introduir certs ID manualment.
+
 # MOMENTUMFRONTEND
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
